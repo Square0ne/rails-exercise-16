@@ -7,5 +7,7 @@ RSpec.describe Author, type: :model do
     it "should have a name" do
         expect((Author.new(first_name:"Alan", last_name:"Turing", homepage:"http://wikipedia.org/Alan_Turing")).name).to eq "Alan Turing"
     end
-
+    it "should'nt create new Author w/o last name" do
+        expect(Author.new(first_name:"Alan", homepage:"http://wikipedia.org/Alan_Turing")).to_not be_valid
+    end
 end
