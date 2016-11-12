@@ -29,4 +29,8 @@ RSpec.feature "Authors", type: :feature do
   it "should have an index page" do
     visit authors_path
   end
+  it "index page should have new author button" do
+    visit authors_path
+    expect(page).to have_css("a", :text => "add author") 
+  end
 end
