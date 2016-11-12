@@ -26,4 +26,7 @@ RSpec.feature "Authors", type: :feature do
     expect(page).to have_text("Turing")
     expect(page).to have_text("http://wikipedia.de/Alan_Turing")
   end
+  it "should have an index page" do
+    visit authors_path
+  end
 end
