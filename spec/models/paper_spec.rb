@@ -13,4 +13,7 @@ RSpec.describe Paper, type: :model do
     it "should'nt create new Paper w/o year" do
         expect(Paper.new(title:'COMPUTING MACHINERY AND INTELLIGENCE', venue: 'Mind 49: 433-460')).to_not be_valid
     end
+    it "should'nt create new Paper with year as non intgeger" do
+        expect(Paper.new(title:'COMPUTING MACHINERY AND INTELLIGENCE',venue: 'Mind 49: 433-460', year: 'nineteen-fifty')).to_not be_valid
+    end
 end
