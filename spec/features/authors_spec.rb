@@ -31,6 +31,17 @@ RSpec.feature "Authors", type: :feature do
   end
   it "index page should have new author button" do
     visit authors_path
-    expect(page).to have_css("a", :text => "Add author") 
+    expect(page).to have_css("a", :text => "Add author")
+  end
+
+  it "should show error message missing last name" do
+    visit new_author_path
+
+    fill_in "First name", :with => "Alan"
+    fill_in "Homepage", :with => "http://wikipedia.de/Alan_Turing"
+
+    click_button "create"
+
+    expect(page).to have_text("Last name can't be blank")
   end
 end
