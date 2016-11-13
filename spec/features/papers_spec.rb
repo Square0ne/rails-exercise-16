@@ -22,4 +22,13 @@ RSpec.feature "Papers", type: :feature do
 
       expect(page).to have_text("Title can't be blank")
     end
+    it "should have an author" do
+        @example = create(:paper)
+        @alan_turing = create(:author)
+        @example.authors.push(@alan_turing)
+      visit paper_path(@example.id)
+
+      expect(page).to have_text("Authors")
+      expect(page).to have_text @alan_turing.name
+    end
 end
