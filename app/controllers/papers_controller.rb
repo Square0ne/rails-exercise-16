@@ -6,6 +6,7 @@ class PapersController < ApplicationController
         @paper = Paper.find(params[:id])
     end
     def new
+        @paper = Paper.new
     end
     def create
         @paper = Paper.new(paper_params)
