@@ -11,4 +11,15 @@ RSpec.feature "Papers", type: :feature do
       expect(page).to have_text("Venue")
       expect(page).to have_text("Year")
     end
+    it "should show error message missing title" do
+      visit new_paper_path
+
+      fill_in "Venue", :with => "mind 49: 433-460"
+      fill_in "Year", :with => 1950
+
+
+      click_button "create"
+
+      expect(page).to have_text("Title can't be blank")
+    end
 end
