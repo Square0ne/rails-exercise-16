@@ -6,4 +6,9 @@ RSpec.describe PapersController, type: :controller do
        get :edit, id: @example.id
        expect(response).to render_template("edit")
     end
+    it "delete paper" do
+       @example= create(:paper)
+       get :destroy, id: @example.id
+       expect(response.status).to eq(302)
+    end
 end
