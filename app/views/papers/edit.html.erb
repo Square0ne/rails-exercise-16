@@ -31,6 +31,13 @@
     <%= f.text_area :year %>
   </p>
 
+    <% (1..5).each do |n| %>
+        <p>
+            <%= f.label "Author #{n}", for: "paper_author_id_#{n}" %><br>
+            <%= f.collection_select :author_ids, @authors, :id, :name, {selected: @paper.author_ids[n-1], include_blank: '(none)'}, {name: "paper[author_ids][]", id: "paper_author_id_#{n}"}%>
+        </p>
+    <% end %>
+
   <p>
     <%= f.submit %>
   </p>
