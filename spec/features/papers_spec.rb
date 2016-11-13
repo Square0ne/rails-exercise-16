@@ -38,4 +38,11 @@ RSpec.feature "Papers", type: :feature do
 
         expect(page).to have_text("Author 1")
     end
+        it "should filter by year" do
+            @example = create(:paper)
+            @example2 = create(:paper2)
+            visit papers_path(year: "1950")
+
+            expect(page).to_not have_text "1968"
+  end
 end
