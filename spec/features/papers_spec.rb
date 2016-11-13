@@ -26,9 +26,16 @@ RSpec.feature "Papers", type: :feature do
         @example = create(:paper)
         @alan_turing = create(:author)
         @example.authors.push(@alan_turing)
-      visit paper_path(@example.id)
+        visit paper_path(@example.id)
 
-      expect(page).to have_text("Authors")
-      expect(page).to have_text @alan_turing.name
+        expect(page).to have_text("Authors")
+        expect(page).to have_text @alan_turing.name
+    end
+    it "should have an author" do
+        @example = create(:paper)
+        @alan_turing = create(:author)
+        visit edit_paper_path(@example.id)
+
+        expect(page).to have_text("Author 1")
     end
 end
