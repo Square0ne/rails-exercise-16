@@ -33,6 +33,11 @@ RSpec.feature "Authors", type: :feature do
     visit authors_path
     expect(page).to have_css("a", :text => "Add author")
   end
+  it "index page should have delete author button" do
+      @alan_turing= create(:author)
+    visit authors_path
+    expect(page).to have_css("a", :text => "Destroy")
+  end
 
   it "should show error message missing last name" do
     visit new_author_path
